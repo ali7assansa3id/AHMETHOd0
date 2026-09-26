@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AHMETHOD — نظام الحسابات المتكامل</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- شاشة تحميل مؤقتة أثناء الاتصال بـ Firebase -->
+  <div id="loadingScreen">جاري الاتصال بقاعدة البيانات السحابية...</div>
+
+  <!-- شاشة تسجيل الدخول (منصة) -->
+  <div id="loginScreen">
+    <div class="loginBox" style="background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:36px 40px;width:340px;text-align:center;">
+      <h1 style="font-size:20px;margin:0 0 4px;color:var(--accent2);">AHMETHOD</h1>
+      <p style="color:var(--muted);font-size:12px;margin:0 0 20px;">نظام الحسابات وإدارة الأعمال</p>
+      <input id="liUser" placeholder="اسم المستخدم" autocomplete="username" style="width:100%;margin-bottom:10px;">
+      <input id="liPass" type="password" placeholder="كلمة السر" autocomplete="current-password" style="width:100%;margin-bottom:10px;">
+      <button class="btn" style="width:100%;" onclick="platformDoLogin()">دخول للنظام</button>
+      <div class="loginErr" id="liErr" style="color:var(--danger);font-size:12px;min-height:16px;margin-top:6px;"></div>
+      <button class="linkBtn" onclick="openRegisterModal()" style="background:none;border:none;color:var(--accent2);cursor:pointer;font-size:13px;text-decoration:underline;padding:8px;margin-top:10px;">ليس لديك حساب؟ إنشاء حساب / شركة جديدة</button>
+    </div>
+  </div>
+
+  <!-- شاشة انتهاء الاشتراك -->
+  <div id="subExpiredScreen">
+    <h2>تنبيه الاشتراك</h2>
+    <p>الشركة: <b id="subExpiredCompanyName"></b></p>
+    <p id="subExpiredMsg"></p>
+    <p>تاريخ الانتهاء: <b id="subExpiredEnd"></b></p>
+    <button class="btn secondary" onclick="backToLoginFromExpired()">رجوع لشاشة الدخول</button>
+  </div>
+
+  <!-- لوحة إدارة الشركات (مدير النظام العام) -->
+  <div id="superAdminShell"></div>
+
+  <!-- واجهة التطبيق الرئيسية — مطابقة للنظام الأصلي -->
+  <div id="appShell">
+    <div id="topbar">
+      <span class="brand">📒 نظام الحسابات</span>
+      <div id="navMain" style="display:flex;gap:4px;flex-wrap:wrap;"></div>
+      <div id="userBox"></div>
+    </div>
+    <div id="subbar"></div>
+    <div id="content"></div>
+  </div>
+
+  <div id="modalRoot"></div>
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+
+  <!-- محرك المحاسبة (الشركة الحالية) -->
+  <script src="app.js"></script>
+  <!-- طبقة المنصة -->
+  <script src="js/storage.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/permissions.js"></script>
+  <script src="js/users.js"></script>
+  <script src="js/companies.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

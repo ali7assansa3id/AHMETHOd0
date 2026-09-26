@@ -1,0 +1,11 @@
+{
+  "name": "AHMETHOD - Smart Accounting & Business Management",
+  "short_name": "AHMETHOD",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f1720",
+  "theme_color": "#0f1720",
+  "lang": "ar",
+  "dir": "rtl",
+  "description": "نظام محاسبي متكامل متعدد الشركات يعمل بالكامل داخل المتصفح"
+}
